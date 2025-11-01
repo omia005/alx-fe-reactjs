@@ -1,7 +1,7 @@
-export function header(){
+export function footer(){
   return (
-    <header>
-     <h1>My Favorite Cities</h1>
-    </header>
+    <footer>
+      <p>© 2023 City Lovers</p>
+    </footer>
   );
 }
