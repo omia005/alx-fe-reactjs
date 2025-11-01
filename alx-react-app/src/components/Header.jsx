@@ -1,7 +1,7 @@
-export function mainContent(){
+export function header(){
   return (
-    <main>
-      <p>I love to visit New York, Paris, and Tokyo.</p>
-    </main>
+    <header>
+      <h1>My Favorite Cities</h1>
+    </header>
   );
 }
