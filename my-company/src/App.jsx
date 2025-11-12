@@ -7,7 +7,7 @@ import About from './About';
 import Services from './Services';
 import Contact from './Contact';
 import Navbar from './Navbar';
-import {BrowserRouter} as Router, Routes, Route from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 function App() {
   const [count, setCount] = useState(0)
