@@ -9,13 +9,13 @@ function Navbar(){
           <link to="/" style={{ textDecoration: 'none', color: 'blue' }}>Home</link>
         </li>
         <li>
-          <link to="/About" style={{ textDecoration: 'none', color: 'blue' }>About</link>
+          <link to="/About" style={{ textDecoration: 'none', color: 'blue' }}>About</link>
         </li>
         <li>
-          <link to="/Services" style={{ textDecoration: 'none', color: 'blue' }>Services</link>
+          <link to="/Services" style={{ textDecoration: 'none', color: 'blue' }}>Services</link>
         </li>
         <li>
-          <link to="/Contact" style={{ textDecoration: 'none', color: 'blue' }>Contacts</link>
+          <link to="/Contact" style={{ textDecoration: 'none', color: 'blue' }}>Contacts</link>
         </li>
       </ul> 
     </nav>
