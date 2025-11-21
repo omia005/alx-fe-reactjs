@@ -21,6 +21,18 @@ const EditRecipeForm = ({ recipeId }) => {
   };
 
   return( 
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="title"
+        defaultValue={recipe.title}
+      />
+      <textarea
+        name="description"
+        defaultValue={recipe.description}
+      />
+      <button type="submit">Save Changes</button>
+    </form>,
     <button onClick = {() => updateRecipe({...recipe, title: recipe.title + '(updated)'})}>
      Update Recipe
     </button>
