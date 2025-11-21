@@ -1,6 +1,6 @@
 import { useRecipeStore } from './recipeStore';
 
-const RecommendationsList = () => {
+const RecommendationList = () => {
   const recipes = useRecipeStore(state => state.recipes);
   const favorites = useRecipeStore(state => state.favorites);
 
@@ -62,4 +62,4 @@ const RecommendationsList = () => {
   );
 };
 
-export default RecommendationsList;
+export default RecommendationList;

@@ -2,7 +2,7 @@
  import EditRecipeForm from './EditRecipeForm';
  import DeleteRecipeButton from './DeleteRecipeButton';
  import { useParams, useNavigate, Link } from 'react-router-dom'
- import {FavouritesList} from './FavouritesList';
+ import {FavouritesList} from './FavoritesList';
  import {RecommendationList} from './RecommendationList';
 
 
