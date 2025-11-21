@@ -2,8 +2,8 @@
  import EditRecipeForm from './EditRecipeForm';
  import DeleteRecipeButton from './DeleteRecipeButton';
  import { useParams, useNavigate, Link } from 'react-router-dom'
- import FavouriteList from './FavouriteList';
- import RecommendationList from './RecommendationList';
+ import {FavouritesList} from './FavouritesList';
+ import {RecommendationList} from './RecommendationList';
 
 
   const RecipeDetails = () => {
@@ -26,7 +26,7 @@
         <p>{recipe.description}</p>
         <EditRecipeForm recipeId={recipe.id} />
         <DeleteRecipeButton recipeId={recipe.id} />
-        <FavouriteList />
+        <FavouritesList />
         <RecommendationList recipe={recipe} />
       </div>
     );
