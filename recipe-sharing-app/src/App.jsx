@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Router } from 'react-router-dom'
 import './App.css'
 import AddRecipeForm from './components/AddRecipeForm.jsx'
 import RecipeList from './components/RecipeList.jsx'
 import RecipeDetails from './components/RecipeDetails.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -23,7 +22,9 @@ function App() {
       <div>
         < RecipeList />
       </div>
-      
+      <div>
+        < RecipeDetails />
+      </div>
     </>
   )
 }

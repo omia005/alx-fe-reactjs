@@ -15,10 +15,7 @@ const EditRecipeForm = ({ recipeId }) => {
       description: e.target.description.value,
     };
   };
-
-  if (!recipe) {
-    return <div>Recipe not found</div>;
-  };
+  
 
   return( 
     <form onSubmit={handleSubmit}>
