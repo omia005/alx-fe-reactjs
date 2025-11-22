@@ -55,7 +55,7 @@ function Search() {
             onChange={(e) => setUsername(e.target.value)}
             placeholder="GitHub username"
             required
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 text-white p-4"
           />
         </div>
 
