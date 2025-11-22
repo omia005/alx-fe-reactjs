@@ -13,7 +13,7 @@ export async function fetchUserData(username, location = "", minRepos = 0) {
     if (minRepos) query += `+repos:>=${minRepos}`;
 
 
-    const url = `$https://api.github.com/search/users?q=${encodeURIComponent(query)}`;
+    const url = `https://api.github.com/search/users?q=${encodeURIComponent(query)}`;
 
     const response = await axios.get(url);
 
