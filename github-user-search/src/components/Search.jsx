@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { fetchUserData } from "../services/githubService";
+import {fetchUserData}  from "../services/githubService";
 
 function Search() {
   const [username, setUsername] = useState("");
   const [location, setLocation] = useState("");
   const [minRepos, setMinRepos] = useState("");
   const [user, setUser] = useState(null);
+  const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -14,19 +15,34 @@ function Search() {
     setLoading(true);
     setError("");
     setUser(null);
+    setRepos([]);
 
     try {
-      const userData = await fetchUserData(
-        username,
-        location,
-        minRepos ? parseInt(minRepos) : 0
-      );
+      const { user, repos } = await fetchUserData(username);
 
-      if (!userData) {
-        setError("No users match the advanced criteria.");
-      } else {
-        setUser(userData);
+      if (!user) {
+        setError("Looks like we can't find the user");
+        setLoading(false);
+        return;
       }
+
+      // Advanced filtering
+      const passesLocation = location
+        ? user.location?.toLowerCase().includes(location.toLowerCase())
+        : true;
+
+      const passesMinRepos = minRepos
+        ? user.public_repos >= parseInt(minRepos)
+        : true;
+
+      if (!passesLocation || !passesMinRepos) {
+        setError("No users match the advanced criteria.");
+        setLoading(false);
+        return;
+      }
+
+      setUser(user);
+      setRepos(repos);
     } catch (err) {
       setError("Looks like we cant find the user");
     } finally {
@@ -36,6 +52,7 @@ function Search() {
 
   return (
     <div className="max-w-xl mx-auto p-4">
+      {/* Search Form */}
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
@@ -55,7 +72,7 @@ function Search() {
             onChange={(e) => setUsername(e.target.value)}
             placeholder="GitHub username"
             required
-            className="bg-blue-500 text-white p-4"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
 
@@ -88,17 +105,22 @@ function Search() {
           />
         </div>
 
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
-          Search
-        </button>
+        {/* Submit Button */}
+        <div className="flex items-center justify-between">
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Search
+          </button>
+        </div>
       </form>
 
+      {/* Conditional Rendering */}
       {loading && <p className="text-gray-700">Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
 
+      {/* Display User Info */}
       {user && (
         <div className="bg-white shadow-md rounded p-4 mt-4 text-gray-700">
           <h3 className="text-lg font-bold mb-2">{user.login}</h3>
@@ -120,6 +142,27 @@ function Search() {
           </p>
           {user.location && <p>Location: {user.location}</p>}
           <p>Public Repositories: {user.public_repos}</p>
+
+          {/* Display Repositories using .map() */}
+          {repos.length > 0 && (
+            <div className="mt-4">
+              <h4 className="font-bold mb-2">Repositories:</h4>
+              <ul className="list-disc list-inside">
+                {repos.map((repo) => (
+                  <li key={repo.id}>
+                    <a
+                      href={repo.html_url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-blue-500 hover:underline"
+                    >
+                      {repo.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       )}
     </div>
