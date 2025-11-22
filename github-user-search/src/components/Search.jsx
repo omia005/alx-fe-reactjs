@@ -1,6 +1,5 @@
 import { useState } from "react";
-import {fetchUserData}  from "../services/githubService";
-
+import { fetchUserData, fetchUserRepos } from "../services/githubService";
 
 function Search() {
   const [username, setUsername] = useState("");
@@ -19,7 +18,7 @@ function Search() {
     setRepos([]);
 
     try {
-      // Fetch user using advanced search
+      // Fetch user using Search API
       const userData = await fetchUserData(
         username,
         location,
@@ -34,11 +33,11 @@ function Search() {
 
       setUser(userData);
 
-      // Fetch user's repositories
+      // Fetch user repositories
       const userRepos = await fetchUserRepos(userData.login);
       setRepos(userRepos);
     } catch (err) {
-      setError("Looks like we can't find the user");
+      setError("Looks like we cant find the user");
     } finally {
       setLoading(false);
     }
@@ -164,3 +163,4 @@ function Search() {
 }
 
 export default Search;
+
