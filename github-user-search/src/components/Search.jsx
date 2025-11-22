@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {fetchUserData}  from "../services/githubService";
 
+
 function Search() {
   const [username, setUsername] = useState("");
   const [location, setLocation] = useState("");
@@ -18,33 +19,26 @@ function Search() {
     setRepos([]);
 
     try {
-      const { user, repos } = await fetchUserData(username);
+      // Fetch user using advanced search
+      const userData = await fetchUserData(
+        username,
+        location,
+        minRepos ? parseInt(minRepos) : 0
+      );
 
-      if (!user) {
-        setError("Looks like we can't find the user");
-        setLoading(false);
-        return;
-      }
-
-      // Advanced filtering
-      const passesLocation = location
-        ? user.location?.toLowerCase().includes(location.toLowerCase())
-        : true;
-
-      const passesMinRepos = minRepos
-        ? user.public_repos >= parseInt(minRepos)
-        : true;
-
-      if (!passesLocation || !passesMinRepos) {
+      if (!userData) {
         setError("No users match the advanced criteria.");
         setLoading(false);
         return;
       }
 
-      setUser(user);
-      setRepos(repos);
+      setUser(userData);
+
+      // Fetch user's repositories
+      const userRepos = await fetchUserRepos(userData.login);
+      setRepos(userRepos);
     } catch (err) {
-      setError("Looks like we cant find the user");
+      setError("Looks like we can't find the user");
     } finally {
       setLoading(false);
     }
