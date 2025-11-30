@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <div>
+      <div style ={{ textAlign: 'center', marginTop: '20px' }}>
         <Routes>
           <Route path='/' element={<h1>GitHub User Search App</h1>}/>
         </Routes>
