@@ -7,7 +7,7 @@ function App() {
     <>
       <div>
         <h1>Recipe Sharing Platform</h1>
-        <Homepage />
+        <HomePage />
       </div>
     </>
   )
