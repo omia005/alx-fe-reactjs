@@ -19,7 +19,7 @@ const HomePage = () =>{
             className="bg-white rounded-2xl shadow p-4 hover:shadow-lg transition"
          >
          <img
-          src={recipe.image}
+          src = {recipe.image}
           alt={recipe.title}
           className="w-full h-40 object-cover rounded-xl mb-4"
          />
@@ -30,7 +30,7 @@ const HomePage = () =>{
         </div>
 );
 }
-export default Homepage;
+export default HomePage;
 
    
   
