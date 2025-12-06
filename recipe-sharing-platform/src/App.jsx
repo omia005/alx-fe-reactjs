@@ -8,18 +8,12 @@ function App() {
 
   return (
     <>
-      <Router>
+      
        <Routes>
          <Route path="/" element={<HomePage />} />
          <Route path="/recipe/:id" element={<RecipeDetail />} />
        </Routes>
-      </Router>
-
-      <div>
-        <h1>Recipe Sharing Platform</h1>
-        <HomePage />
-        <RecipeDetail />
-      </div>
+      
     </>
   )
 }
