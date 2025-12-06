@@ -6,20 +6,23 @@ const AddRecipeForm = () => {
   const [instructions, setInstructions] = useState("");
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Validation
+  // ✅ Extract validation into a separate function
+  const validate = () => {
     const newErrors = {};
     if (!title.trim()) newErrors.title = "Title is required";
     if (!ingredients.trim()) newErrors.ingredients = "Ingredients are required";
     else if (ingredients.split(",").length < 2)
       newErrors.ingredients = "Please include at least two ingredients (comma separated)";
     if (!instructions.trim()) newErrors.instructions = "Preparation steps are required";
+    return newErrors;
+  };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newErrors = validate(); // Use the validate function
     setErrors(newErrors);
 
-    // If validation passes
     if (Object.keys(newErrors).length === 0) {
       const newRecipe = {
         id: Date.now(),
@@ -113,3 +116,5 @@ const AddRecipeForm = () => {
 };
 
 export default AddRecipeForm;
+
+
