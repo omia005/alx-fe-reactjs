@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+    "image": "https://via.placeholder.com/150",
+    "ingredients": ["200g spaghetti", "100g bacon", "2 eggs", "50g parmesan", "Black pepper"],
+    "instructions": ["Boil spaghetti", "Fry bacon", "Mix eggs and cheese", "Combine all"]
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
+    "image": "https://via.placeholder.com/150",
+    "ingredients": ["200g spaghetti", "100g bacon", "2 eggs", "50g parmesan", "Black pepper"],
+    "instructions": ["Boil spaghetti", "Fry bacon", "Mix eggs and cheese", "Combine all"]
+  },
+  {
+    "id": 3,
+    "title": "Vegetable Stir Fry",
+    "summary": "A quick and healthy mix of vegetables stir-fried with soy sauce and garlic.",
+    "image": "https://via.placeholder.com/150",
+     "ingredients": ["200g spaghetti", "100g bacon", "2 eggs", "50g parmesan", "Black pepper"],
+    "instructions": ["Boil spaghetti", "Fry bacon", "Mix eggs and cheese", "Combine all"]
+  },
+  {
+    "id": 4,
+    "title": "Beef Tacos",
+    "summary": "Crispy taco shells filled with seasoned ground beef, lettuce, cheese, and salsa.",
+    "image": "https://via.placeholder.com/150",
+    "ingredients": ["200g spaghetti", "100g bacon", "2 eggs", "50g parmesan", "Black pepper"],
+    "instructions": ["Boil spaghetti", "Fry bacon", "Mix eggs and cheese", "Combine all"]
+  }
+]
