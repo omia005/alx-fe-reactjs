@@ -1,4 +1,28 @@
-i
+import { useState } from "react";
+
+export default function RegistrationForm() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!username) {
+      setErrors("Username is required");
+      return;
+    }
+
+    if (!email) {
+      setErrors("Email is required");
+      return;
+    }
+
+    if (!password) {
+      setErrors("Password is required");
+      return;
+    }
 
     setErrors("");
     console.log({ username, email, password });
