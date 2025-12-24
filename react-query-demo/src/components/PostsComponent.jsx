@@ -18,9 +18,12 @@ export default function PostsComponent() {
     isLoading,
     isError,
     error,
+    refetch,
+    isFetching,
   } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchPosts,
+    staleTime: 1000 * 60 * 5, // 5 minutes
   });
 
   if (isLoading) {
@@ -34,6 +37,12 @@ export default function PostsComponent() {
   return (
     <div>
       <h2>Posts</h2>
+
+      <button onClick={() => refetch()}>
+        Refetch Posts
+      </button>
+
+      {isFetching && <p>Updating data...</p>}
 
       {posts.slice(0, 10).map((post) => (
         <div key={post.id}>
